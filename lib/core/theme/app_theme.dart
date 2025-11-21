@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AppTheme {
   static const primaryColor = Color(0xff6366f1);
@@ -23,9 +22,30 @@ class AppTheme {
         tertiary: accentColor,
         surface: surfaceColor,
         error: errorColor,
-      ),
+      ), 
       scaffoldBackgroundColor: backgroundColor,
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
+        titleTextStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
+      textTheme: TextTheme(
+        headlineLarge: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          color: Color(0xff1E293B)
+
+        )
+      )
     );
+    
   }
 
   static ThemeData get darkTheme {
