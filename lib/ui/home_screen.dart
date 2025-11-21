@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          spacing: 24,
           children: [
             Container(
               padding: EdgeInsets.all(24),
@@ -36,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
+                spacing: 4,
                 children: [
                   Icon(
                     Icons.search_rounded,
@@ -48,7 +50,30 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: theme.colorScheme.primary,
                     ),
                   ),
+                  Text(
+                    "Digite o CEP e descubra seu endereço completo",
+                    style: theme.textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
                 ],
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              maxLength: 9,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.location_on_rounded),
+                labelText: 'CEP',
+                hintText: 'Digite o CEP (ex: 01310-100)',
+                counterText: '',
+              ),
+            ),
+            AnimatedSwitcher(
+              duration: Duration.zero,
+              child: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.search_rounded),
+                label: Text("Buscar CEP"),
               ),
             ),
           ],
