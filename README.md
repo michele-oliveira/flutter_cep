@@ -48,7 +48,5 @@ Este projeto é um aplicativo Flutter para consulta de CEPs (Códigos de Endere�
 - O projeto utiliza requisições HTTP para buscar dados de CEP.
 - Certifique-se de estar com um emulador ou dispositivo físico conectado.
 - Para dúvidas sobre Flutter, consulte a [documentação oficial](https://docs.flutter.dev/).
-
-## Licença
-
-Este projeto está sob a licença MIT.
+- 
+<img width="453" height="978" alt="Image" src="https://github.com/user-attachments/assets/130e2ead-233c-4429-95bd-16c8fd3336b3" />
