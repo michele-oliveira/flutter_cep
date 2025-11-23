@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/models/cep_model.dart';
 
 class AddressWidget extends StatelessWidget {
-  const AddressWidget({super.key});
+  final CepModel? cepModel;
+
+  const AddressWidget({super.key, this.cepModel});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    if (cepModel == null) {
+      return SizedBox.shrink();
+    }
+
     return Column(
       children: [
         Container(
@@ -38,20 +46,62 @@ class AddressWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        _InfoCard(),
-        _InfoCard(),
-        _InfoCard(),
-        _InfoCard(),
-        _InfoCard(),
-        _InfoCard(),
-        _InfoCard(),
+        _InfoCard(
+          icon: Icons.location_on_rounded,
+          title: 'CEP',
+          subTitle: cepModel!.cep,
+          color: theme.colorScheme.primary,
+        ),
+        if (cepModel!.logradouro.isNotEmpty)
+          _InfoCard(
+            icon: Icons.streetview_rounded,
+            title: 'Logradouro',
+            subTitle: cepModel!.logradouro,
+            color: theme.colorScheme.secondary,
+          ),
+        if (cepModel!.bairro.isNotEmpty)
+          _InfoCard(
+            icon: Icons.home_rounded,
+            title: 'Bairro',
+            subTitle: cepModel!.bairro,
+            color: theme.colorScheme.tertiary,
+          ),
+        _InfoCard(
+          icon: Icons.location_city_rounded,
+          title: 'Cidade',
+          subTitle: cepModel!.localidade,
+          color: Colors.purple,
+        ),
+        _InfoCard(
+          icon: Icons.map_rounded,
+          title: 'Estado',
+          subTitle: cepModel!.estado,
+          color: Colors.orange,
+        ),
+        if (cepModel!.complemento.isNotEmpty)
+          _InfoCard(
+            icon: Icons.info_rounded,
+            title: 'Complemento',
+            subTitle: cepModel!.complemento,
+            color: Colors.green,
+          ),
       ],
     );
   }
 }
 
 class _InfoCard extends StatelessWidget {
-  const _InfoCard();
+  final IconData icon;
+  final String title;
+  final String subTitle;
+  final Color color;
+
+  const _InfoCard({
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +111,10 @@ class _InfoCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.black.withValues(alpha: .2), width: 1),
+        border: Border.all(color: color.withValues(alpha: .2), width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: .1),
+            color: color.withValues(alpha: .1),
             blurRadius: 8,
             offset: Offset(0, 2),
           ),
@@ -75,10 +125,10 @@ class _InfoCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.blue.withValues(alpha: 0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Icon(Icons.home, color: Colors.red, size: 24),
+            child: Icon(icon, color: color, size: 24),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -86,14 +136,14 @@ class _InfoCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'CEP',
+                  title,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.red,
+                    color: color,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
-                  '0111-0000',
+                  subTitle,
                   style: Theme.of(
                     context,
                   ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
