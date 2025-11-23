@@ -1,16 +1,54 @@
-# flutter_cep
+# Flutter CEP
 
-A new Flutter project.
+Este projeto é um aplicativo Flutter para consulta de CEPs (Códigos de Endereçamento Postal) brasileiros.
 
-## Getting Started
+## Tecnologias Utilizadas
 
-This project is a starting point for a Flutter application.
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+- Consumo de API de CEP (ex: [ViaCEP](https://viacep.com.br/))
 
-A few resources to get you started if this is your first Flutter project:
+## Funcionalidades
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Consulta de CEPs brasileiros
+- Exibição de informações de endereço
+- Interface intuitiva e responsiva
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Pré-requisitos
+
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- [Dart SDK](https://dart.dev/get-dart)
+- Editor de código (VS Code, Android Studio, etc.)
+
+## Como Rodar o Projeto
+
+1. Clone o repositório:
+  ```bash
+  git clone <url-do-repositório>
+  cd flutter_cep
+  ```
+
+2. Instale as dependências:
+  ```bash
+  flutter pub get
+  ```
+
+3. Execute o aplicativo:
+  ```bash
+  flutter run
+  ```
+
+## Estrutura do Projeto
+
+- `lib/` - Código fonte principal
+- `pubspec.yaml` - Gerenciamento de dependências
+
+## Informações Adicionais
+
+- O projeto utiliza requisições HTTP para buscar dados de CEP.
+- Certifique-se de estar com um emulador ou dispositivo físico conectado.
+- Para dúvidas sobre Flutter, consulte a [documentação oficial](https://docs.flutter.dev/).
+
+## Licença
+
+Este projeto está sob a licença MIT.
